@@ -13,7 +13,7 @@
 @interface DRProducerConsumerQueue : NSObject
 
 typedef NSArray* (^producerBlock_t)(void);
--(id)initWithProducerBlock:(producerBlock_t)producerBlock productionQueue:(dispatch_queue_t)productionQueue targetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems;
+-(id)initWithTargetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems initialItems:(NSArray*)initialItems productionQueue:(dispatch_queue_t)productionQueue producerBlock:(producerBlock_t)producerBlock;
 
 -(id)consumeItem;
 

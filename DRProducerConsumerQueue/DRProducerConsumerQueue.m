@@ -22,16 +22,20 @@
 
 @implementation DRProducerConsumerQueue
 
--(id)initWithProducerBlock:(producerBlock_t)producerBlock productionQueue:(dispatch_queue_t)productionQueue targetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems
+-(id)initWithTargetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems initialItems:(NSArray*)initialItems productionQueue:(dispatch_queue_t)productionQueue producerBlock:(producerBlock_t)producerBlock
 {
     if ((self = [super init]) == nil) {
         return nil;
     }
     
     _itemsQueue = [NSMutableArray array];
+    if (initialItems != nil) {
+        [_itemsQueue dr_enqueueItemsInArray:initialItems];
+    }
     _producerBlock = [producerBlock copy];
     _productionQueue = productionQueue;
-    
+    _targetNumberOfPreparedItems = targetNumberOfPreparedItems;
+
     return self;
 }
 
