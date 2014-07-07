@@ -16,6 +16,7 @@
 		3F2E0C8D196AAB690043DEA9 /* libDRProducerConsumerQueue.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2E0C75196AAB680043DEA9 /* libDRProducerConsumerQueue.a */; };
 		3F2E0C93196AAB690043DEA9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F2E0C91196AAB690043DEA9 /* InfoPlist.strings */; };
 		3F2E0C95196AAB690043DEA9 /* DRProducerConsumerQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E0C94196AAB690043DEA9 /* DRProducerConsumerQueueTests.m */; };
+		3F2E0CA1196ACCA20043DEA9 /* NSMutableArray+DRQueueUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E0CA0196ACCA20043DEA9 /* NSMutableArray+DRQueueUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		3F2E0C90196AAB690043DEA9 /* DRProducerConsumerQueueTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DRProducerConsumerQueueTests-Info.plist"; sourceTree = "<group>"; };
 		3F2E0C92196AAB690043DEA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F2E0C94196AAB690043DEA9 /* DRProducerConsumerQueueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DRProducerConsumerQueueTests.m; sourceTree = "<group>"; };
+		3F2E0C9F196ACCA20043DEA9 /* NSMutableArray+DRQueueUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+DRQueueUtils.h"; sourceTree = "<group>"; };
+		3F2E0CA0196ACCA20043DEA9 /* NSMutableArray+DRQueueUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+DRQueueUtils.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 			children = (
 				3F2E0C7D196AAB680043DEA9 /* DRProducerConsumerQueue.h */,
 				3F2E0C7F196AAB690043DEA9 /* DRProducerConsumerQueue.m */,
+				3F2E0C9F196ACCA20043DEA9 /* NSMutableArray+DRQueueUtils.h */,
+				3F2E0CA0196ACCA20043DEA9 /* NSMutableArray+DRQueueUtils.m */,
 				3F2E0C7B196AAB680043DEA9 /* Supporting Files */,
 			);
 			path = DRProducerConsumerQueue;
@@ -225,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F2E0C80196AAB690043DEA9 /* DRProducerConsumerQueue.m in Sources */,
+				3F2E0CA1196ACCA20043DEA9 /* NSMutableArray+DRQueueUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
