@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "DRProducerConsumerQueue"
   s.version          = "0.1.0"
-  s.summary          = "A simple consumer-producer queue."
+  s.summary          = "A simple producer-consumer queue."
   s.description      = <<-DESC
                        Implements a queue with an attached producer block, which runs automatically until the queue has least a specified number of items ready to consume. 
                        
@@ -16,7 +16,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'DRProducerConsumerQueue'
-  #s.resources = 'Pod/Assets/*.png'
-
   s.public_header_files = 'DRProducerConsumerQueue/*.h'
 end
