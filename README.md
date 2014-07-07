@@ -5,18 +5,18 @@
 [![License](https://img.shields.io/cocoapods/l/DRProducerConsumerQueue.svg?style=flat)](http://cocoadocs.org/docsets/DRProducerConsumerQueue)
 [![Platform](https://img.shields.io/cocoapods/p/DRProducerConsumerQueue.svg?style=flat)](http://cocoadocs.org/docsets/DRProducerConsumerQueue)
 
-## Usage
+## About
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
+DRProducerConsumerQueue implements a queue with an attached producer block, which runs automatically until the queue has least a specified number of items ready to consume.
+                       
+The queue is synchronized on the main thread, while the production work itself can be done in the background.
 
 ## Installation
 
 DRProducerConsumerQueue is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-    pod "DRProducerConsumerQueue"
+    pod 'DRProducerConsumerQueue'
 
 ## Author
 
@@ -25,4 +25,3 @@ Dan Raviv, dan.raviv@gmail.com
 ## License
 
 DRProducerConsumerQueue is available under the MIT license. See the LICENSE file for more info.
-
