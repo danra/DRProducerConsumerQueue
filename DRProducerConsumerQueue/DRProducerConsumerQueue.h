@@ -22,7 +22,7 @@ typedef NSArray* (^producerBlock_t)(void);
 
 @property (nonatomic, assign) NSUInteger targetNumberOfPreparedItems;
 
-// Only use this to examine the queue state. To consume items, use the -consume method instead.
+// Only use this to examine the queue state. To consume items, use the -consumeItem method.
 @property (nonatomic, copy, readonly) NSMutableArray* itemsQueue;
 
 @end
