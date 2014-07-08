@@ -1,3 +1,5 @@
 language: objective-c
-xcode_project: DRProducerConsumerQueue.xcodeproj
-xcode_scheme: DRProducerConsumerQueue
+before_install:
+    - brew update
+    - brew install xctool
+script: xctool -project DRProducerConsumerQueue.xcodeproj -scheme DRProducerConsumerQueue build
