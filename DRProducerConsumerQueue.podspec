@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "DRProducerConsumerQueue"
-  s.version          = "0.1.1"
+  s.version          = "0.1.2"
   s.summary          = "A simple producer-consumer queue."
   s.description      = <<-DESC
                        Implements a queue with an attached producer block, which runs automatically until the queue has least a specified number of items ready to consume. 
