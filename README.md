@@ -7,7 +7,7 @@
 
 ## About
 
-DRProducerConsumerQueue implements a queue with an attached producer block, which runs automatically until the queue has least a specified number of items ready to consume.
+DRProducerConsumerQueue implements a queue with an attached producer block, which runs automatically until the queue has at least a specified number of items ready to consume.
                        
 The queue is synchronized on the main thread, while the production work itself can be done in the background.
 
