@@ -50,7 +50,9 @@
     self.producerBlock(^(NSArray* producedItems) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.producing = NO;
-            [self.itemsQueue dr_enqueueItemsInArray:producedItems];
+            if (producedItems != nil) {
+                [self.itemsQueue dr_enqueueItemsInArray:producedItems];
+            }
             if ([self isProductionEnabled]) {
                 [self produceIfNeedMoreItems];
             }
