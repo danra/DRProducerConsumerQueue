@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 
 // Note - DRProducerConsumerQueue is not thread-safe, and is only safe to access from main thread.
-// The items production can be done on a non-main queue.
+// The producer block can perform some work in the background and call its completion block with the results when the produced items are ready.
 @interface DRProducerConsumerQueue : NSObject
 
-typedef NSArray* (^producerBlock_t)(void);
--(id)initWithTargetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems initialItems:(NSArray*)initialItems productionQueue:(dispatch_queue_t)productionQueue producerBlock:(producerBlock_t)producerBlock;
+typedef void (^producerCompletionBlock_t)(NSArray* producedItems);
+typedef void (^producerBlock_t)(producerCompletionBlock_t completionBlock);
+
+-(id)initWithTargetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems initialItems:(NSArray*)initialItems producerBlock:(producerBlock_t)producerBlock;
 
 -(id)consumeItem;
 

@@ -14,7 +14,6 @@
 
 @property (nonatomic, copy) NSMutableArray* itemsQueue;
 @property (nonatomic, strong) producerBlock_t producerBlock;
-@property (nonatomic, strong) dispatch_queue_t productionQueue;
 @property (nonatomic, assign, getter = isProducing) BOOL producing;
 
 @end
@@ -22,7 +21,7 @@
 
 @implementation DRProducerConsumerQueue
 
--(id)initWithTargetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems initialItems:(NSArray*)initialItems productionQueue:(dispatch_queue_t)productionQueue producerBlock:(producerBlock_t)producerBlock
+-(id)initWithTargetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems initialItems:(NSArray*)initialItems producerBlock:(producerBlock_t)producerBlock
 {
     if ((self = [super init]) == nil) {
         return nil;
@@ -33,7 +32,6 @@
         [_itemsQueue dr_enqueueItemsInArray:initialItems];
     }
     _producerBlock = [producerBlock copy];
-    _productionQueue = productionQueue;
     _targetNumberOfPreparedItems = targetNumberOfPreparedItems;
 
     return self;
@@ -49,8 +47,7 @@
 -(void)produce
 {
     self.producing = YES;
-    dispatch_async(self.productionQueue, ^{
-        NSArray* producedItems = self.producerBlock();
+    self.producerBlock(^(NSArray* producedItems) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.producing = NO;
             [self.itemsQueue dr_enqueueItemsInArray:producedItems];
