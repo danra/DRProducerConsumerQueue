@@ -21,21 +21,49 @@
 
 @implementation DRProducerConsumerQueue
 
--(id)initWithTargetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems initialItems:(NSArray*)initialItems producerBlock:(producerBlock_t)producerBlock
+#pragma mark - Initializer
+
+-(id)initWithTargetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems producerBlock:(producerBlock_t)producerBlock
 {
     if ((self = [super init]) == nil) {
         return nil;
     }
     
     _itemsQueue = [NSMutableArray array];
-    if (initialItems != nil) {
-        [_itemsQueue dr_enqueueItemsInArray:initialItems];
-    }
     _producerBlock = [producerBlock copy];
     _targetNumberOfPreparedItems = targetNumberOfPreparedItems;
 
     return self;
 }
+
+#pragma mark - Public methods
+
+-(id)consumeItem
+{
+    id item = [self.itemsQueue dr_dequeue];
+    if ([self isProductionEnabled] && ![self isProducing]) {
+        [self produceIfNeedMoreItems];
+    }
+    return item;
+}
+
+-(void)enqueueItemsManually:(NSArray*)items
+{
+    [self.itemsQueue dr_enqueueItemsInArray:items];
+}
+
+-(void)setProductionEnabled:(BOOL)productionEnabled
+{
+    if (productionEnabled == _productionEnabled) {
+        return;
+    }
+    _productionEnabled = productionEnabled;
+    if (_productionEnabled && ![self isProducing]) {
+        [self produceIfNeedMoreItems];
+    }
+}
+
+#pragma mark - Private methods
 
 -(void)produceIfNeedMoreItems
 {
@@ -58,26 +86,6 @@
             }
         });
     });
-}
-
--(void)setProductionEnabled:(BOOL)productionEnabled
-{
-    if (productionEnabled == _productionEnabled) {
-        return;
-    }
-    _productionEnabled = productionEnabled;
-    if (_productionEnabled && ![self isProducing]) {
-        [self produceIfNeedMoreItems];
-    }
-}
-
--(id)consumeItem
-{
-    id item = [self.itemsQueue dr_dequeue];
-    if ([self isProductionEnabled] && ![self isProducing]) {
-        [self produceIfNeedMoreItems];
-    }
-    return item;
 }
 
 @end

@@ -15,9 +15,11 @@
 typedef void (^producerCompletionBlock_t)(NSArray* producedItems);
 typedef void (^producerBlock_t)(producerCompletionBlock_t completionBlock);
 
--(id)initWithTargetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems initialItems:(NSArray*)initialItems producerBlock:(producerBlock_t)producerBlock;
+-(id)initWithTargetNumberOfPreparedItems:(NSUInteger)targetNumberOfPreparedItems producerBlock:(producerBlock_t)producerBlock;
 
 -(id)consumeItem;
+
+-(void)enqueueItemsManually:(NSArray*)items;
 
 
 @property (nonatomic, assign, getter = isProductionEnabled) BOOL productionEnabled;
